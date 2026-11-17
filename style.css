@@ -1,0 +1,2254 @@
+/* ==========================================
+   1. VARIÁVEIS GLOBAIS E RESET (BOOTSTRAP 5 + CLEAN CODE)
+   ========================================== */
+
+:root {
+  /* Integração direta com o Bootstrap 5 para manter a identidade da ARTEK */
+  --bs-body-font-family: 'Barlow', sans-serif;
+  --bs-primary: #3b368c;
+
+  /* Paleta Oficial de Cores */
+  --azul-principal: #3b368c;
+  --azul-hover: #4a45d1;
+  --azul-botao-form: #2f4388;
+  --texto-escuro: #000000;
+  --texto-corpo: #666666;
+  --texto-suave: #7a7a7a;
+  --texto-hero: #e2e4f0;
+  --fundo-claro: #fcfdff;
+  --fundo-secao: #f8f9fc;
+  --fundo-rodape: #eff1f6;
+
+  /* Escala Tipográfica Padronizada */
+  --fonte-h1: 46px;
+  --fonte-h2: 38px;
+  --fonte-h3: 18px;
+  --fonte-lead: 19px;
+  --fonte-corpo: 16px;
+}
+
+/* Reset não-destrutivo: preserva os utilitários de margin/padding do Bootstrap */
+*, *::before, *::after {
+  box-sizing: border-box;
+  font-family: 'Barlow', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+  color: var(--texto-corpo);
+  background-color: #ffffff;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* ==========================================
+   2. ANIMAÇÕES DE SURGIMENTO (SCROLL REVEAL)
+   ========================================== */
+
+.escondido {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.mostrar {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.escondido:not(.mostrar).delay-1 { transition-delay: 0.1s; }
+.escondido:not(.mostrar).delay-2 { transition-delay: 0.25s; }
+.escondido:not(.mostrar).delay-3 { transition-delay: 0.4s; }
+.escondido:not(.mostrar).delay-4 { transition-delay: 0.55s; }
+
+/* ==========================================
+   3. CABEÇALHO E MENU GLOBAL (HEADER + BOOTSTRAP 5)
+   ========================================== */
+
+header,
+header.navbar {
+  padding: 35px 40px !important;
+  width: 100%;
+  z-index: 20;
+}
+
+header .container {
+  max-width: 1200px;
+}
+
+.navbar-brand {
+  padding: 0;
+  margin: 0;
+}
+
+.logo {
+  width: 135px;
+  height: auto;
+  display: block;
+}
+
+header nav ul,
+header .navbar-nav {
+  gap: 40px;
+}
+
+header nav a,
+header .navbar-nav .nav-link {
+  color: #e2e2e2 !important;
+  text-decoration: none !important;
+  font-size: 16px;
+  font-weight: 400;
+  position: relative;
+  padding: 4px 0 8px !important;
+  transition: color 0.3s ease;
+  display: inline-block;
+}
+
+header nav a.ativo,
+header nav a:hover,
+header .navbar-nav .nav-link:hover,
+header .navbar-nav .nav-link:focus {
+  color: #ffffff !important;
+}
+
+/* Linha azul animada abaixo dos links do menu */
+header nav a::after,
+header .navbar-nav .nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--azul-hover);
+  transition: width 0.3s ease;
+}
+
+header nav a:hover::after,
+header .navbar-nav .nav-link:hover::after,
+header nav a.ativo::after {
+  width: 100%;
+}
+
+/* ==========================================
+   4. HERO DA HOME (INDEX.HTML)
+   ========================================== */
+
+.hero {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+              url('assets/img/banner-slider-men-view-city.webp') center/cover no-repeat;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #ffffff;
+  padding: 40px 20px 80px;
+}
+
+.hero-content h1 {
+  font-size: var(--fonte-h1);
+  font-weight: 400; 
+  line-height: 1.3;
+  margin-bottom: 25px;
+  letter-spacing: 0.5px;
+}
+
+.hero-content p {
+  font-size: var(--fonte-lead);
+  font-weight: 400;
+  color: var(--texto-hero);
+  line-height: 1.6;
+  margin-bottom: 45px;
+}
+
+/* Botão Saiba Mais (Glassmorphism + Feixe de Brilho Flat) */
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.14) !important;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.35) !important;
+  padding: 16px 45px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 18px;
+  text-decoration: none !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.25s ease, box-shadow 0.3s ease;
+  z-index: 1;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -60%;
+  width: 35%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.45);
+  box-shadow: 12px 0 0 -4px rgba(255, 255, 255, 0.25);
+  transform: skewX(-25deg);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.btn-primary .seta {
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 700;
+  margin-left: 15px;
+  transition: transform 0.3s ease;
+}
+
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:focus {
+  background-color: var(--azul-principal) !important;
+  border-color: var(--azul-hover) !important;
+  color: #ffffff !important;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(59, 54, 140, 0.45);
+}
+
+.btn-primary:hover::before,
+.btn-primary:active::before {
+  animation: feixeFlatGlass 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.btn-primary:hover .seta,
+.btn-primary:active .seta {
+  transform: translateX(5px);
+}
+
+@keyframes feixeFlatGlass {
+  0%   { left: -60%; }
+  100% { left: 140%; }
+}
+
+/* ==========================================
+   5. SEÇÃO SERVIÇOS (CARDS - INDEX.HTML)
+   ========================================== */
+
+.servicos {
+  background-color: #F8F9FA;
+  padding: 90px 20px;
+  text-align: center;
+}
+
+.servicos h2 {
+  font-size: var(--fonte-h2);
+  font-weight: 700;
+  color: var(--texto-escuro);
+  line-height: 1.3;
+}
+
+.cards-container {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: wrap;
+  gap: 45px;
+  max-width: 1200px;
+  margin: 50px auto 0;
+}
+
+.servicos .card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none !important;
+  color: inherit;
+  background: #ffffff;
+  padding: 28px;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  width: 320px;
+  transition: transform 0.4s ease, filter 0.4s ease, opacity 0.4s ease, box-shadow 0.4s ease;
+  cursor: pointer;
+}
+
+.servicos .card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 22px;
+}
+
+.servicos .card h3 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--texto-escuro);
+  margin-bottom: 12px;
+}
+
+.servicos .card p {
+  font-size: 15px;
+  color: var(--texto-corpo);
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+
+@media (hover: hover) and (min-width: 993px) {
+  .cards-container:hover .card {
+    transform: scale(0.95);
+    filter: brightness(0.78);
+    opacity: 0.85;
+  }
+
+  .cards-container .card:hover {
+    transform: scale(1.06);
+    filter: brightness(1);
+    opacity: 1;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18);
+    z-index: 10;
+  }
+}
+
+/* ==========================================
+   6. SEÇÃO PORQUE NOS ESCOLHER! (LOOPING + HOVER)
+   ========================================== */
+
+.secao-porque-escolher {
+  background: linear-gradient(rgba(22, 27, 68, 0.86), rgba(22, 27, 68, 0.90)),
+              url('assets/img/bg-azul.webp') center / cover no-repeat;
+  background-color: #181e4b;
+}
+
+.porque-titulo {
+  font-size: clamp(2rem, 3.2vw, 2.75rem);
+  letter-spacing: -0.3px;
+}
+
+.porque-foto-frame {
+  height: 430px;
+  max-width: 340px;
+  background-color: #0f121e;
+}
+
+.porque-foto-item {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: scale(1.04);
+  transition: opacity 0.65s ease-in-out, transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.porque-foto-item.is-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.porque-topico {
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+
+.porque-topico-icone {
+  width: 38px;
+  height: 38px;
+  margin-top: 2px;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.porque-topico-texto {
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.porque-topico:hover,
+.porque-topico.is-active {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.22);
+  transform: translateX(6px);
+}
+
+.porque-topico:hover .porque-topico-icone,
+.porque-topico.is-active .porque-topico-icone {
+  transform: scale(1.12);
+}
+
+/* ==========================================
+  7. SEÇÃO COMO FUNCIONA (DESIGN E INTERAÇÃO TIMELINE)
+   ========================================== */
+
+.secao-como-funciona {
+  background-color: var(--fundo-secao, #f9f9ff);
+}
+
+.titulo-conheca {
+  color: var(--azul-principal, #3b368c);
+  font-size: 28px;
+  letter-spacing: -0.5px;
+}
+
+.selo-solucoes {
+  display: inline-block;
+  background-color: var(--azul-principal, #3b368c);
+  font-size: 26px;
+  padding: 6px 25px;
+  border-radius: 0 12px 12px 12px;
+  letter-spacing: 1px;
+}
+
+.titulo-como-funciona {
+  font-size: 32px;
+}
+
+/* --- INTERAÇÃO NOS PASSOS (HOVER EM TIMELINE) --- */
+
+.passo-item {
+  cursor: pointer;
+  position: relative;
+  border-top: 1px solid rgba(59, 54, 140, 0.4); 
+  transition: background-color 0.3s ease;
+}
+
+/* Linha grossa azul que surge no topo */
+.passo-item::before {
+  content: '';
+  position: absolute;
+  top: -1px; /* Sobrepõe exatamente a linha fina */
+  left: 0;
+  width: 0;  /* Começa invisível */
+  height: 3px;
+  background-color: var(--azul-principal, #3b368c);
+  transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 2;
+}
+
+/* Preenche a linha do item focado E de TODOS os itens ANTERIORES a ele!
+   O :has(~ .passo-item:hover) deteta se existe um irmão à frente com o mouse em cima */
+.passo-item:hover::before,
+.passo-item:has(~ .passo-item:hover)::before {
+  width: 100%;
+}
+
+/* Textos (Número e Título do Passo) */
+.passo-num, .passo-item h4 {
+  transition: color 0.3s ease;
+}
+
+/* Muda a cor do título e do número para azul */
+.passo-item:hover h4,
+.passo-item:hover .passo-num {
+  color: var(--azul-principal, #3b368c) !important;
+}
+
+/* Deixa o número em negrito no hover */
+.passo-item:hover .passo-num {
+  font-weight: 700 !important;
+}
+
+/* Ícone Circular Base */
+.passo-icone-circulo {
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--azul-principal, #3b368c);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  background-color: transparent;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.passo-icone-circulo img {
+  transition: filter 0.3s ease;
+}
+
+/* Efeito no Ícone: Fica azul, amplia 20% (scale 1.2) e a imagem fica branca */
+.passo-item:hover .passo-icone-circulo {
+  background-color: var(--azul-principal, #3b368c);
+  transform: scale(1.2); 
+}
+
+.passo-item:hover .passo-icone-circulo img {
+  filter: brightness(0) invert(1);
+}
+
+/* --- BOTÃO OUTLINE ANIMADO --- */
+.btn-outline-custom {
+  color: var(--texto-suave, #7a7a7a);
+  border: 1px solid #b5b8d0;
+  padding: 10px 28px;
+  border-radius: 8px;
+  font-size: 15px;
+  background-color: transparent;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.seta-animada {
+  transition: transform 0.3s ease;
+}
+
+.btn-outline-custom:hover {
+  background-color: var(--azul-principal, #3b368c);
+  color: #ffffff;
+  border-color: var(--azul-principal, #3b368c);
+}
+
+.btn-outline-custom:hover .seta-animada {
+  transform: translateX(6px);
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (min-width: 992px) {
+  .com-borda-esq {
+    border-left: 1px solid rgba(59, 54, 140, 0.3);
+  }
+}
+
+@media (max-width: 991.98px) {
+  .com-borda-esq {
+    border-left: none;
+  }
+  .passo-item {
+    margin-bottom: 15px;
+  }
+}
+
+/* ==========================================
+   8. SEÇÃO NOSSOS CLIENTES (CARROSSEL)
+   ========================================== */
+
+.clientes {
+  background-color: var(--fundo-claro);
+  padding: 80px 0;
+  overflow: hidden;
+}
+
+.clientes-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.clientes-topo {
+  text-align: left;
+  margin-bottom: 25px;
+}
+
+.subtitulo-portfolio {
+  color: var(--azul-principal);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.clientes-topo h2 {
+  font-size: var(--fonte-h2);
+  color: var(--texto-escuro);
+  font-weight: 700;
+}
+
+.clientes-descricao {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.clientes-descricao p {
+  color: var(--texto-corpo);
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.carrossel-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.carrossel-track {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 35px;
+  padding: 50px 0;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.cliente-card {
+  position: relative;
+  width: 260px;
+  height: 370px;
+  border-radius: 14px;
+  overflow: hidden;
+  flex-shrink: 0;
+  opacity: 0.45;
+  transform: scale(0.88);
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), 
+              opacity 0.6s ease, 
+              box-shadow 0.6s ease;
+  cursor: pointer;
+}
+
+.cliente-card.ativo {
+  opacity: 1;
+  transform: scale(1.12);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  z-index: 5;
+}
+
+.cliente-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cliente-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0) 55%);
+  z-index: 1;
+}
+
+.tag-setor {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background-color: var(--azul-principal);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 6px;
+  z-index: 2;
+}
+
+.card-info {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  color: #ffffff;
+  z-index: 2;
+  text-align: left;
+}
+
+.card-info h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 3px;
+}
+
+.card-info p {
+  font-size: 13px;
+  color: #d1d5eb;
+  margin-bottom: 0;
+}
+
+.seta-carrossel {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  border: none;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  color: var(--azul-principal);
+  font-size: 18px;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.seta-carrossel:hover {
+  background-color: var(--azul-principal);
+  color: #ffffff;
+}
+
+.seta-esq { left: 10px; }
+.seta-dir { right: 10px; }
+
+.carrossel-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 25px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #d5d8e6;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot.ativo {
+  width: 28px;
+  border-radius: 10px;
+  background-color: var(--azul-principal);
+}
+
+/* ==========================================
+   9. SEÇÃO FALE COM A ARTEK (CONTATO)
+   ========================================== */
+
+.contato {
+  background-color: var(--fundo-secao);
+  padding: 100px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.contato-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.contato-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.contato-header h2 {
+  font-size: var(--fonte-h2);
+  font-weight: 700;
+  color: var(--texto-escuro);
+  margin-bottom: 15px;
+}
+
+.contato-header p {
+  color: var(--texto-suave);
+  font-size: var(--fonte-corpo);
+  max-width: 650px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.contato-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.contato-form input,
+.contato-form textarea {
+  background-color: #ffffff;
+  border: 1px solid #dcdfe6;
+  border-radius: 25px;
+  padding: 16px 25px;
+  font-size: 15px;
+  color: #333333;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contato-form input:focus,
+.contato-form textarea:focus {
+  border-color: var(--azul-principal);
+  box-shadow: 0 0 0 3px rgba(59, 54, 140, 0.1);
+}
+
+.contato-form textarea {
+  border-radius: 20px;
+  resize: none;
+}
+
+.input-half {
+  width: calc(50% - 10px);
+}
+
+.input-full {
+  width: 100%;
+}
+
+/* Checkbox LGPD */
+.lgpd-consentimento {
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+.lgpd-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--texto-corpo);
+  line-height: 1.5;
+  cursor: pointer;
+  user-select: none;
+}
+
+.contato-form .lgpd-label input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  margin-top: 2px;
+  border-radius: 4px;
+  accent-color: var(--azul-principal);
+  cursor: pointer;
+  flex-shrink: 0;
+  box-shadow: none;
+}
+
+.lgpd-label a {
+  color: var(--azul-principal);
+  font-weight: 700;
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+.lgpd-label a:hover {
+  color: var(--azul-hover);
+}
+
+.btn-enviar {
+  background-color: var(--azul-botao-form);
+  color: #ffffff;
+  border: none;
+  border-radius: 30px;
+  padding: 15px 60px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin-top: 10px;
+}
+
+.btn-enviar:hover {
+  background-color: #1e2c60;
+  transform: translateY(-2px);
+}
+
+.contato-imagem img {
+  width: 100%;
+  border-radius: 15px;
+  display: block;
+}
+
+/* ==========================================
+   10. RODAPÉ GLOBAL (FOOTER + BOOTSTRAP GRID)
+   ========================================== */
+
+.rodape {
+  background-color: var(--fundo-rodape);
+  padding: 80px 20px 30px;
+  color: #8c8c9a;
+}
+
+.rodape .container {
+  max-width: 1200px;
+}
+
+.rodape-logo {
+  width: 180px;
+}
+
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #c5c7d4;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.social-icon img {
+  width: 18px;
+  opacity: 0.6;
+  transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+.social-icon:hover {
+  background-color: var(--azul-principal);
+  border-color: var(--azul-principal);
+}
+
+.social-icon:hover img {
+  opacity: 1;
+  filter: brightness(0) invert(1);
+}
+
+.links-col h3,
+.contato-col h3 {
+  color: var(--texto-escuro);
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+
+.rodape-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.rodape-links li {
+  margin-bottom: 14px;
+}
+
+.rodape-links a {
+  color: #8c8c9a;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.rodape-links a:hover {
+  color: var(--azul-principal);
+}
+
+.info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.info-icon {
+  width: 24px;
+  margin-top: 3px;
+  opacity: 0.5;
+}
+
+.info-texto p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #8c8c9a;
+}
+
+.telefone-destaque {
+  display: block;
+  font-size: 22px;
+  font-weight: 700;
+  color: #8c8c9a;
+  line-height: 1.1;
+}
+
+.telefone-sub {
+  font-size: 13px;
+  color: #8c8c9a;
+}
+
+.rodape-bottom p,
+.rodape-legal a,
+.separador {
+  color: #6a7499;
+  font-size: 13px;
+}
+
+.rodape-legal a:hover {
+  text-decoration: underline;
+}
+
+.separador {
+  margin: 0 10px;
+  opacity: 0.5;
+}
+/* Ajuste de alinhamento responsivo para o rodapé */
+.contato-col h3 {
+  text-align: center;
+}
+
+@media (min-width: 992px) {
+  .contato-col h3 {
+    text-align: left;
+  }
+}
+
+/* ==========================================
+   11.A PÁGINA INTERNA: MODERNIZAÇÃO
+   ========================================== */
+
+.hero-modernizacao {
+  position: relative;
+  min-height: 80vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.50), rgba(0, 0, 0, 0.65)), 
+              url('assets/img/apertando\ o\ botão.webp') center/cover no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  color: #ffffff;
+  text-align: center;
+  padding-bottom: 90px;
+}
+
+.hero-modernizacao::before {
+  background: linear-gradient(rgba(0, 0, 0, 0.50), rgba(0, 0, 0, 0.65)), 
+              url('assets/img/apertando\ o\ botão.webp') center/cover no-repeat !important;
+}
+
+/* Posiciona o bloco de texto especificamente à direita na página de Modernização */
+.mod-hero-content {
+  max-width: 600px;
+  padding: 0 20px;
+  margin-top: 30px;
+  /* Posiciona o bloco de texto na metade direita da tela, livre da mão */
+  margin-left: 45%; 
+  margin-right: auto;
+  text-align:center;
+}
+
+.mod-hero-content h1 {
+  font-size: 52px;
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: 0.5px;
+  margin-bottom: 22px;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-align:center;
+}
+
+.mod-hero-content p {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--texto-hero);
+  max-width: 620px;
+  margin: 0 auto 35px;
+  text-align:center;
+}
+
+.mod-hero-content p strong {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+
+.btn-orcamento:hover,
+.btn-orcamento:active,
+.btn-orcamento:focus {
+  background: var(--azul-principal) !important;
+  border-color: var(--azul-hover);
+  color: #ffffff !important;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(59, 54, 140, 0.45);
+  /* Adicione estas linhas para centralizar o botão perfeitamente abaixo do texto */
+  margin-top: 25px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-orcamento {
+  display: block;                  /* Transforma em bloco para aceitar centralização por margem */
+  width: fit-content;              /* Ajusta o tamanho exatamente à largura do texto interno */
+  max-width: 280px;
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #ffffff !important;
+  padding: 13px 38px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 400;
+  text-decoration: none !important;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  
+  /* Centralização perfeita */
+  margin-top: 25px;
+  margin-left: auto;
+  margin-right: auto;
+  
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Setas laterais do slider de serviços */
+.mod-seta {
+  position: absolute;
+  top: 55%;
+  transform: translateY(-50%);
+  color: #ffffff !important;
+  font-size: 30px;
+  text-decoration: none !important;
+  opacity: 0.65;
+  z-index: 10;
+  padding: 10px;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.mod-seta:hover {
+  opacity: 1;
+}
+
+.mod-seta-esq { left: 30px; }
+.mod-seta-dir { right: 30px; }
+
+/* Seção dos 4 Pilares (Hexágonos com Sombra Flat Azul) */
+.mod-pilares {
+  background-color: #ffffff;
+  padding: 90px 20px 70px;
+  text-align: center;
+}
+
+.mod-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.pilares-grid {
+  margin-bottom: 60px;
+}
+
+.pilar-item {
+  padding: 0 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.pilar-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: 115px;
+  width: 2px;
+  background-color: #d8dce8;
+}
+
+.hexagono-borda {
+  position: relative;
+  width: 195px;
+  height: 220px;
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  clip-path: none;
+  filter: drop-shadow(-3px -2px 0px #ffffff) 
+          drop-shadow(-3px 2px 0px #ffffff)
+          drop-shadow(0px -3px 0px #ffffff);
+  z-index: 2;
+}
+
+.hexagono-borda::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--azul-principal);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  z-index: -1;
+  transform: translate(0, 0) scale(0.92);
+  opacity: 0;
+  transition: transform 0.65s cubic-bezier(0.34, 1.56, 0.64, 1), 
+              opacity 0.5s ease, 
+              background-color 0.3s ease;
+}
+
+.pilar-item.mostrar .hexagono-borda::before,
+.pilar-item.aos-animate .hexagono-borda::before {
+  transform: translate(-14px, -6px) scale(1);
+  opacity: 1;
+}
+
+.pilar-item:nth-child(1) .hexagono-borda::before { transition-delay: 0.25s; }
+.pilar-item:nth-child(2) .hexagono-borda::before { transition-delay: 0.40s; }
+.pilar-item:nth-child(3) .hexagono-borda::before { transition-delay: 0.55s; }
+.pilar-item:nth-child(4) .hexagono-borda::before { transition-delay: 0.70s; }
+
+.hexagono-img {
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  background-color: var(--fundo-secao);
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.hexagono-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.pilar-item:hover .hexagono-borda::before {
+  transition-delay: 0s !important;
+  transform: translate(-20px, -10px) scale(1.02);
+  background-color: var(--azul-hover);
+}
+
+.pilar-item:hover .hexagono-img {
+  transform: translate(4px, -4px);
+}
+
+.pilar-item:hover .hexagono-img img {
+  transform: scale(1.08);
+}
+
+.pilar-item h3 {
+  font-size: 15px;
+  font-weight: 800;
+  color: #222222;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+.pilar-item:hover h3 {
+  color: var(--azul-principal);
+}
+
+.pilar-item p {
+  font-size: 14px;
+  color: var(--texto-corpo);
+  line-height: 1.5;
+  max-width: 220px;
+}
+
+.btn-modernize-outline {
+  display: inline-block;
+  color: #555555;
+  background-color: #ffffff;
+  border: 1.5px solid var(--azul-principal);
+  padding: 10px 32px;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: 400;
+  box-shadow: 0 3px 0px var(--azul-principal);
+  transition: all 0.3s ease;
+}
+
+.btn-modernize-outline:hover,
+.btn-modernize-outline:active {
+  background-color: var(--azul-principal);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(59, 54, 140, 0.3);
+}
+
+/* Selo ABNT */
+.mod-abnt {
+  background-color: var(--fundo-secao);
+  border-top: 1px solid #e0e2eb;
+  padding: 60px 20px 80px;
+  text-align: center;
+}
+
+.selo-abnt-img {
+  width: 115px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.mod-abnt p {
+  font-size: 15px;
+  color: var(--texto-corpo);
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+.mod-abnt p strong {
+  color: #222222;
+}
+
+/* ==========================================
+   11.B PÁGINA INTERNA: ELEVADORES NOVOS
+   ========================================== */
+
+.hero-novos {
+  position: relative;
+  min-height: 80vh;
+  background: linear-gradient(rgba(15, 18, 30, 0.55), rgba(15, 18, 30, 0.65)), 
+              url('assets/img/elevador.webp') center/cover no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  color: #ffffff;
+  text-align: center;
+  padding-bottom: 90px;
+}
+
+.novos-hero-content {
+  max-width: 800px;
+  padding: 0 60px;
+  margin-top: 30px;
+}
+
+.novos-hero-content h1 {
+  font-size: var(--fonte-h1);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.novos-hero-content p {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--texto-hero);
+  max-width: 650px;
+  margin: 0 auto 38px;
+}
+
+.novos-engenharia {
+  background-color: var(--fundo-secao);
+  padding: 90px 20px 100px;
+  text-align: center;
+}
+
+.engenharia-header {
+  max-width: 720px;
+  margin: 0 auto 60px;
+}
+
+.engenharia-header h2 {
+  font-size: 32px;
+  font-weight: 800;
+  color: #1a1a1a;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.engenharia-divisor {
+  width: 36px;
+  height: 2px;
+  background-color: var(--azul-principal);
+  margin: 18px auto 30px;
+}
+
+.engenharia-header p {
+  font-size: var(--fonte-corpo);
+  color: var(--texto-corpo);
+  line-height: 1.6;
+}
+
+.engenharia-header p strong {
+  color: #444444;
+  font-weight: 700;
+}
+
+.engenharia-grid {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 30px;
+  max-width: 980px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.engenharia-card {
+  flex: 1;
+  min-width: 260px;
+  max-width: 300px;
+  background-color: #ffffff;
+  border: 1px solid #eceef5;
+  border-radius: 10px;
+  padding: 45px 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.engenharia-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(59, 54, 140, 0.1);
+}
+
+.icone-custom {
+  width: 68px;
+  height: auto;
+  margin-bottom: 25px;
+  display: block;
+}
+
+.engenharia-card p {
+  font-size: var(--fonte-corpo);
+  color: var(--texto-corpo);
+  line-height: 1.45;
+  margin: 0;
+}
+
+/* ==========================================
+   11.C PÁGINA INTERNA: MANUTENÇÃO MULTIMARCAS
+   ========================================== */
+
+.hero-manutencao {
+  position: relative;
+  min-height: 80vh;
+  background: linear-gradient(rgba(15, 18, 30, 0.65), rgba(15, 18, 30, 0.75)), 
+              url('assets/img/bg_tecnico_analisando_elevador.webp') center/cover no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  color: #ffffff;
+  text-align: center;
+  padding-bottom: 90px;
+}
+
+.manut-hero-content {
+  max-width: 800px;
+  padding: 0 60px;
+  margin-top: 30px;
+}
+
+.manut-hero-content h1 {
+  font-size: var(--fonte-h1);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.manut-hero-content p {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--texto-hero);
+  max-width: 680px;
+  margin: 0 auto 38px;
+}
+
+/* Seção Azul: Corretiva e Preventiva */
+.manut-destaque {
+  background: url('assets/img/bg_tecnico_sobre_elevador.webp') center/cover no-repeat;
+  padding: 80px 20px;
+  color: #ffffff;
+  margin-top: 25px;
+}
+
+.manut-destaque-container {
+  max-width: 1050px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+}
+
+.manut-textos {
+  flex: 1;
+  max-width: 500px;
+}
+
+.manut-subtitulo {
+  display: block;
+  font-size: 18px;
+  color: #d1d5eb;
+  margin-bottom: 4px;
+}
+
+.manut-textos h2 {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+.manut-topico {
+  margin-bottom: 22px;
+}
+
+.manut-topico p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--texto-hero);
+}
+
+.manut-topico strong {
+  color: #ffffff;
+}
+
+/* Box Branco com Animação em Cascata */
+.manut-box-cascata {
+  background-color: #ffffff;
+  border-radius: 28px;
+  width: 340px;
+  padding: 0 40px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: max-height 0.9s cubic-bezier(0.25, 1, 0.5, 1),
+              padding 0.6s ease,
+              opacity 0.5s ease,
+              transform 0.6s ease;
+}
+
+.manut-box-cascata.mostrar {
+  max-height: 520px;
+  padding: 40px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cascata-etapa {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.cascata-icone {
+  width: 85px;
+  height: 85px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  opacity: 0;
+  transform: scale(0.3);
+  transition: opacity 0.45s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.cascata-icone img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.cascata-texto h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #2b2b2b;
+  line-height: 1.25;
+  margin-bottom: 0;
+  opacity: 0;
+  transform: translateX(-18px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.cascata-linha {
+  width: 3px;
+  height: 22px;
+  background-color: #6c6f82;
+  border-radius: 2px;
+  margin: 8px 0 8px 41px;
+  position: relative;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.35s ease;
+}
+
+.manut-box-cascata.mostrar .etapa-1 .cascata-icone { opacity: 1; transform: scale(1); transition-delay: 0.4s; }
+.manut-box-cascata.mostrar .etapa-1 .cascata-texto h3 { opacity: 1; transform: translateX(0); transition-delay: 0.65s; }
+.manut-box-cascata.mostrar .linha-1 { transform: scaleY(1); transition-delay: 0.9s; }
+
+.manut-box-cascata.mostrar .etapa-2 .cascata-icone { opacity: 1; transform: scale(1); transition-delay: 1.15s; }
+.manut-box-cascata.mostrar .etapa-2 .cascata-texto h3 { opacity: 1; transform: translateX(0); transition-delay: 1.4s; }
+.manut-box-cascata.mostrar .linha-2 { transform: scaleY(1); transition-delay: 1.65s; }
+
+.manut-box-cascata.mostrar .etapa-3 .cascata-icone { opacity: 1; transform: scale(1); transition-delay: 1.9s; }
+.manut-box-cascata.mostrar .etapa-3 .cascata-texto h3 { opacity: 1; transform: translateX(0); transition-delay: 2.15s; }
+
+/* Galeria, Locais de Atendimento e CTA Final */
+.manut-escolha {
+  background-color: var(--fundo-claro);
+  padding: 80px 20px 100px;
+  text-align: center;
+}
+
+.manut-galeria {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  max-width: 1000px;
+  margin: 0 auto 70px;
+}
+
+.manut-foto {
+  flex: 1;
+  height: 320px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.manut-foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.manut-foto:hover img {
+  transform: scale(1.05);
+}
+
+.manut-escolha-conteudo {
+  max-width: 950px;
+  margin: 0 auto;
+}
+
+.manut-escolha-conteudo h2 {
+  font-size: var(--fonte-h2);
+  font-weight: 400;
+  color: #111111;
+}
+
+.manut-escolha-conteudo p {
+  font-size: var(--fonte-corpo);
+  color: var(--texto-corpo);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+/* Faixa de Locais de Atendimento */
+.locais-grid {
+  max-width: 1050px;
+  width: 100%;
+}
+
+.locais-grid.escondido {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.local-icone {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  opacity: 0;
+  transform: scale(0.3);
+  transition: opacity 0.45s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.local-nome {
+  font-size: 18px;
+  font-weight: 700;
+  color: #333333;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(-16px);
+  transition: opacity 0.45s ease, transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), color 0.3s ease;
+}
+
+.local-item:hover .local-icone {
+  transform: translateY(-3px) scale(1.08);
+  transition-delay: 0s !important;
+}
+
+.local-item:hover .local-nome {
+  color: var(--azul-principal);
+}
+
+.locais-grid.mostrar .item-1 .local-icone { opacity: 1; transform: scale(1); transition-delay: 0.1s; }
+.locais-grid.mostrar .item-1 .local-nome  { opacity: 1; transform: translateX(0); transition-delay: 0.28s; }
+
+.locais-grid.mostrar .item-2 .local-icone { opacity: 1; transform: scale(1); transition-delay: 0.25s; }
+.locais-grid.mostrar .item-2 .local-nome  { opacity: 1; transform: translateX(0); transition-delay: 0.43s; }
+
+.locais-grid.mostrar .item-3 .local-icone { opacity: 1; transform: scale(1); transition-delay: 0.4s; }
+.locais-grid.mostrar .item-3 .local-nome  { opacity: 1; transform: translateX(0); transition-delay: 0.58s; }
+
+.locais-grid.mostrar .item-4 .local-icone { opacity: 1; transform: scale(1); transition-delay: 0.55s; }
+.locais-grid.mostrar .item-4 .local-nome  { opacity: 1; transform: translateX(0); transition-delay: 0.73s; }
+
+.locais-grid.mostrar .item-5 .local-icone { opacity: 1; transform: scale(1); transition-delay: 0.7s; }
+.locais-grid.mostrar .item-5 .local-nome  { opacity: 1; transform: translateX(0); transition-delay: 0.88s; }
+
+.btn-manut-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--azul-principal);
+  color: #ffffff !important;
+  padding: 16px 40px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 400;
+  margin-top: 20px;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-manut-cta .seta {
+  margin-left: 12px;
+  font-size: 18px;
+}
+
+.btn-manut-cta:hover {
+  background-color: var(--azul-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(59, 54, 140, 0.25);
+}
+
+/* ==========================================
+   12. PÁGINAS LEGAIS (TERMOS DE USO E PRIVACIDADE)
+   ========================================== */
+
+.hero-legal {
+  background: linear-gradient(135deg, #151836 0%, #2d3569 100%);
+  min-height: 42vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  color: #ffffff;
+  text-align: center;
+  padding-bottom: 60px;
+}
+
+.legal-hero-content {
+  max-width: 780px;
+  padding: 20px 20px 0;
+}
+
+.legal-tag {
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.12);
+  color: var(--texto-hero);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  padding: 6px 16px;
+  border-radius: 20px;
+  margin-bottom: 15px;
+}
+
+.legal-hero-content h1 {
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.legal-hero-content p {
+  font-size: 17px;
+  color: var(--texto-hero);
+  margin-bottom: 0;
+}
+
+.legal-secao {
+  background-color: var(--fundo-secao);
+  padding: 70px 20px 90px;
+}
+
+.legal-card {
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  border: 1px solid #eceef5;
+  border-radius: 16px;
+  padding: 55px 60px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.04);
+}
+
+.legal-atualizacao {
+  display: inline-block;
+  font-size: 13px;
+  color: var(--texto-suave);
+  background-color: #f3f4f9;
+  padding: 6px 14px;
+  border-radius: 6px;
+  margin-bottom: 35px;
+}
+
+.legal-bloco {
+  margin-bottom: 35px;
+}
+
+.legal-bloco h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--azul-principal);
+  margin-bottom: 12px;
+  padding-left: 14px;
+  border-left: 3px solid var(--azul-principal);
+}
+
+.legal-bloco p,
+.legal-bloco li {
+  font-size: 16px;
+  color: var(--texto-corpo);
+  line-height: 1.7;
+}
+
+.legal-bloco ul {
+  padding-left: 22px;
+  margin-top: 10px;
+}
+
+.legal-bloco li {
+  margin-bottom: 8px;
+}
+
+.legal-bloco a {
+  color: var(--azul-principal);
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.legal-contato-box {
+  background-color: #f8f9ff;
+  border: 1px solid #e0e3f5;
+  border-left: 4px solid var(--azul-principal);
+  border-radius: 10px;
+  padding: 25px 30px;
+  margin-top: 45px;
+}
+
+.legal-contato-box h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--texto-escuro);
+  margin-bottom: 8px;
+}
+
+.legal-contato-box p {
+  font-size: 15px;
+  color: var(--texto-corpo);
+  line-height: 1.6;
+}
+
+/* ==========================================
+   15. PÁGINA DE ERRO (404)
+   ========================================== */
+
+/* Fundo escuro com gradiente corporativo para destacar o texto branco */
+.hero-404 {
+  background: linear-gradient(135deg, #151836 0%, #2d3569 100%);
+  padding: 100px 20px;
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Tipografia gigante do 404 */
+.erro-codigo {
+  font-size: clamp(120px, 15vw, 180px);
+  font-weight: 800;
+  letter-spacing: -2px;
+  line-height: 1;
+  /* Efeito de contorno (stroke) com preenchimento translúcido */
+  color: rgba(255, 255, 255, 0.1);
+  -webkit-text-stroke: 2px rgba(255, 255, 255, 0.8);
+  margin-bottom: 20px;
+}
+
+.erro-titulo {
+  font-size: clamp(28px, 4vw, 38px);
+  color: #ffffff;
+}
+
+.erro-texto {
+  font-size: 17px;
+  color: var(--texto-hero, #e2e4f0);
+  max-width: 550px;
+  line-height: 1.6;
+}
+
+.btn-outline-404:hover {
+  background-color: #ffffff;
+  color: var(--azul-principal, #3b368c) !important;
+  border-color: #ffffff;
+}
+
+/* Responsividade de empilhamento dos botões na 404 */
+@media (max-width: 600px) {
+  .hero-404 .btn-orcamento, 
+  .hero-404 .btn-outline-404 {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+
+/* ==========================================
+   13. TRANSIÇÕES SUAVES COM SLIDE DA FOTO DE FUNDO
+   ========================================== */
+
+@view-transition {
+  navigation: auto;
+}
+
+html:has(.hero-modernizacao),
+html:has(.hero-novos),
+html:has(.hero-manutencao) {
+  background-color: #0f121e;
+}
+
+.hero-modernizacao,
+.hero-novos,
+.hero-manutencao {
+  position: relative;
+  overflow: hidden;
+  background: #0f121e !important;
+  z-index: 1;
+}
+
+.hero-modernizacao::before,
+.hero-novos::before,
+.hero-manutencao::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -8%;
+  right: -8%;
+  z-index: -1;
+  will-change: transform, opacity, filter;
+  animation: fadeZoomFoto 0.55s ease-out forwards;
+}
+
+.hero-modernizacao::before {
+  background: linear-gradient(rgba(0, 0, 0, 0.50), rgba(0, 0, 0, 0.65)), 
+              url('assets/img/apertando\ o\ botão.webp') center/cover no-repeat;
+}
+
+.hero-novos::before {
+  background: linear-gradient(rgba(15, 18, 30, 0.55), rgba(15, 18, 30, 0.65)), 
+              url('assets/img/elevador.webp') center/cover no-repeat;
+}
+
+.hero-manutencao::before {
+  background: linear-gradient(rgba(15, 18, 30, 0.65), rgba(15, 18, 30, 0.75)), 
+              url('assets/img/bg_tecnico_analisando_elevador.webp') center/cover no-repeat;
+}
+
+/* Animações de Entrada */
+body.entrada-direita .hero-modernizacao::before,
+body.entrada-direita .hero-novos::before,
+body.entrada-direita .hero-manutencao::before {
+  animation: fotoEntraDireita 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+body.entrada-direita .mod-hero-content,
+body.entrada-direita .novos-hero-content,
+body.entrada-direita .manut-hero-content {
+  animation: textoEntraDireita 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+body.entrada-esquerda .hero-modernizacao::before,
+body.entrada-esquerda .hero-novos::before,
+body.entrada-esquerda .hero-manutencao::before {
+  animation: fotoEntraEsquerda 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+body.entrada-esquerda .mod-hero-content,
+body.entrada-esquerda .novos-hero-content,
+body.entrada-esquerda .manut-hero-content {
+  animation: textoEntraEsquerda 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Animações de Saída */
+body.saindo-esquerda .hero-modernizacao::before,
+body.saindo-esquerda .hero-novos::before,
+body.saindo-esquerda .hero-manutencao::before {
+  animation: fotoSaiEsquerda 0.28s ease-in forwards;
+}
+
+body.saindo-esquerda .mod-hero-content,
+body.saindo-esquerda .novos-hero-content,
+body.saindo-esquerda .manut-hero-content {
+  animation: textoSaiEsquerda 0.28s ease-in forwards;
+}
+
+body.saindo-direita .hero-modernizacao::before,
+body.saindo-direita .hero-novos::before,
+body.saindo-direita .hero-manutencao::before {
+  animation: fotoSaiDireita 0.28s ease-in forwards;
+}
+
+body.saindo-direita .mod-hero-content,
+body.saindo-direita .novos-hero-content,
+body.saindo-direita .manut-hero-content {
+  animation: textoSaiDireita 0.28s ease-in forwards;
+}
+
+body.saindo-fade {
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+@keyframes fadeZoomFoto {
+  from { opacity: 0.4; transform: scale(1.04); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fotoEntraDireita {
+  from { opacity: 0.3; transform: translateX(55px) scale(1.02); }
+  to   { opacity: 1; transform: translateX(0) scale(1); }
+}
+
+@keyframes fotoEntraEsquerda {
+  from { opacity: 0.3; transform: translateX(-55px) scale(1.02); }
+  to   { opacity: 1; transform: translateX(0) scale(1); }
+}
+
+@keyframes fotoSaiEsquerda {
+  from { opacity: 1; transform: translateX(0) scale(1); }
+  to   { opacity: 0.25; transform: translateX(-55px) scale(1.02); }
+}
+
+@keyframes fotoSaiDireita {
+  from { opacity: 1; transform: translateX(0) scale(1); }
+  to   { opacity: 0.25; transform: translateX(55px) scale(1.02); }
+}
+
+@keyframes textoEntraDireita {
+  from { opacity: 0; transform: translateX(85px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes textoEntraEsquerda {
+  from { opacity: 0; transform: translateX(-85px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes textoSaiEsquerda {
+  from { opacity: 1; transform: translateX(0); }
+  to   { opacity: 0; transform: translateX(-85px); }
+}
+
+@keyframes textoSaiDireita {
+  from { opacity: 1; transform: translateX(0); }
+  to   { opacity: 0; transform: translateX(85px); }
+}
+
+/* ==========================================
+   14. RESPONSIVIDADE GLOBAL (TABLETS E CELULARES)
+   ========================================== */
+
+/* --- TELAS ATÉ 991.98px (Tablets e Notebooks menores) --- */
+@media (max-width: 991.98px) {
+  header,
+  header.navbar {
+    padding: 25px 25px !important;
+  }
+
+  .navbar-collapse {
+    background-color: rgba(15, 18, 35, 0.96);
+    padding: 25px 20px;
+    border-radius: 12px;
+    margin-top: 15px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.35);
+  }
+
+  header nav ul,
+  header .navbar-nav {
+    gap: 18px;
+  }
+
+  .hero-content h1,
+  .mod-hero-content h1,
+  .novos-hero-content h1,
+  .manut-hero-content h1 {
+    font-size: 36px;
+  }
+
+  /* Centraliza o texto de Modernização apenas em tablets e celulares */
+  @media (max-width: 991.98px) {
+  .mod-hero-content {
+    margin-left: auto;
+    margin-right: auto; /* Centraliza perfeitamente no celular/tablet */
+    padding: 0 35px;
+  }
+}
+
+  /* Ajusta a moldura da foto em "Porque nos escolher!" no tablet/mobile */
+  .porque-foto-frame {
+    height: 380px;
+    max-width: 100%;
+  }
+
+  /* Centraliza a seção Soluções sem sobrepor o botão */
+  .solucoes-conteudo {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .solucoes-titulo {
+    align-self: center;
+  }
+
+  .pilar-item::after {
+    display: none !important;
+  }
+
+  .manut-destaque-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .manut-galeria {
+    flex-wrap: wrap;
+  }
+
+  .manut-foto {
+    flex: 0 0 45%;
+    height: 280px;
+  }
+}
+
+/* --- TELAS ATÉ 600px (Celulares) --- */
+@media (max-width: 600px) {
+  header,
+  header.navbar {
+    padding: 20px 15px !important;
+  }
+
+  .logo {
+    width: 115px;
+  }
+
+  .hero-content h1 br,
+  .hero-content p br,
+  .clientes-descricao p br,
+  .engenharia-header p br {
+    display: none;
+  }
+
+  .hero-content h1,
+  .mod-hero-content h1,
+  .novos-hero-content h1,
+  .manut-hero-content h1 {
+    font-size: 28px;
+    line-height: 1.25;
+  }
+
+  .hero-content p,
+  .mod-hero-content p,
+  .novos-hero-content p,
+  .manut-hero-content p {
+    font-size: 15px;
+    margin-bottom: 30px;
+  }
+
+  .mod-hero-content,
+  .novos-hero-content,
+  .manut-hero-content {
+    padding: 0 35px;
+  }
+
+  .mod-seta-esq { left: 5px; }
+  .mod-seta-dir { right: 5px; }
+  .mod-seta { font-size: 22px; }
+
+  .btn-primary {
+    padding: 14px 30px;
+    font-size: 16px;
+    width: 100%;
+    max-width: 260px;
+  }
+
+  .servicos .card {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .servicos h2,
+  .clientes-topo h2,
+  .contato-header h2,
+  .manut-escolha-conteudo h2 {
+    font-size: 28px;
+  }
+
+  .engenharia-header h2 {
+    font-size: 24px;
+  }
+
+  .clientes-topo {
+    text-align: center;
+  }
+
+  .input-half {
+    width: 100%;
+  }
+
+  .btn-enviar {
+    width: 100%;
+  }
+
+  .engenharia-card {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .manut-box-cascata {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .manut-box-cascata.mostrar {
+    padding: 30px 25px;
+  }
+
+  .cascata-etapa {
+    text-align: left;
+  }
+
+  .manut-foto {
+    flex: 0 0 100%;
+    max-width: 320px;
+  }
+
+  .legal-hero-content h1 {
+    font-size: 28px;
+  }
+
+  .legal-card {
+    padding: 30px 22px;
+  }
+
+  .legal-bloco h2 {
+    font-size: 19px;
+  }
+
+  .rodape {
+    padding: 50px 20px 25px;
+    text-align: center;
+  }
+
+  .info-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}

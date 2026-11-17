@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manutenções Multimarcas - ARTEK Elevadores</title>
+
+    <!-- 1. Fonte Barlow -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,700;0,800;1,400&display=swap" rel="stylesheet">
+
+    <!-- 2. Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- 3. AOS CSS (Animações de Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- 4. Seu CSS customizado SEMPRE por último -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- HERO MANUTENÇÃO -->
+    <section class="hero-manutencao">
+        
+        <!-- Header Global injetado automaticamente via script.js -->
+        <div id="header-global" class="w-100"></div>
+
+        <!-- Setas laterais fechando o ciclo entre as 3 páginas de serviços -->
+        <a href="elevadores_novos.html" class="mod-seta mod-seta-esq" title="Ir para Elevadores Novos">
+            &#10094;
+            <span class="seta-label"></span>
+        </a>
+
+        <a href="modernizacao.html" class="mod-seta mod-seta-dir" title="Ir para Modernização">
+            <span class="seta-label"></span>
+            &#10095;
+        </a>
+
+        <div class="manut-hero-content container escondido delay-1" data-aos="fade-up">
+            <h1>MANUTENÇÕES<br>MULTIMARCAS</h1>
+            <p>
+                Atendemos condomínios e empresas em todo o Litoral Paulista, unindo rapidez, tecnologia de ponta e uma equipe altamente especializada para garantir o funcionamento seguro do seu equipamento.
+            </p>
+            <a href="index.html#contato" class="btn-orcamento">solicite um orçamento</a>
+        </div>
+    </section>
+
+    
+    <!-- SEÇÃO AZUL: CORRETIVA E PREVENTIVA + BOX ANIMADO EM CASCATA -->
+    <section class="manut-destaque">
+        <div class="manut-destaque-container container">
+        
+            <!-- Coluna da Esquerda: Textos -->
+            <div class="manut-textos escondido delay-1" data-aos="fade-right">
+                <span class="manut-subtitulo">Especializados em Manutenções</span>
+                <h2>Corretiva e Preventiva</h2>
+
+                <div class="manut-topico">
+                    <p><strong>Transparência e Previsão:</strong> Fornecemos relatórios mensais detalhados sobre os serviços realizados e antecipamos riscos futuros, permitindo decisões mais seguras.</p>
+                </div>
+
+                <div class="manut-topico">
+                    <p><strong>Logística Inteligente:</strong> Contamos com uma frota de veículos estrategicamente distribuída, assegurando agilidade no deslocamento e tempos de resposta mais rápidos.</p>
+                </div>
+
+                <div class="manut-topico">
+                    <p><strong>Agilidade e Peças de Reposição:</strong> Com um almoxarifado técnico bem estruturado e parcerias sólidas com as principais montadoras, garantimos um atendimento rápido e minimizamos o tempo de máquina parada.</p>
+                </div>
+            </div>
+
+            <!-- Coluna da Direita: Box Branco que colapsa para baixo em cascata -->
+            <!-- A classe "escondido" ativa toda a sequência quando a seção entra na tela -->
+            <div class="manut-box-cascata escondido">
+                
+                <!-- Etapa 1 -->
+                <div class="cascata-etapa etapa-1">
+                    <div class="cascata-icone">
+                        <img src="assets/img/icone-manutencao-elevador-1.png" alt="Relatórios mensais">
+                    </div>
+                    <div class="cascata-texto">
+                        <h3>Relatórios<br>mensais</h3>
+                    </div>
+                </div>
+
+                <!-- Linha vertical 1 -->
+                <div class="cascata-linha linha-1"></div>
+
+                <!-- Etapa 2 -->
+                <div class="cascata-etapa etapa-2">
+                    <div class="cascata-icone">
+                        <img src="assets/img/icone-manutencao-elevador-2.png" alt="Frota veicular">
+                    </div>
+                    <div class="cascata-texto">
+                        <h3>Frotas<br>veiculares</h3>
+                    </div>
+                </div>
+
+                <!-- Linha vertical 2 -->
+                <div class="cascata-linha linha-2"></div>
+
+                <!-- Etapa 3 -->
+                <div class="cascata-etapa etapa-3">
+                    <div class="cascata-icone">
+                        <img src="assets/img/icone-manutencao-elevador-3.png" alt="Almoxarife técnico">
+                    </div>
+                    <div class="cascata-texto">
+                        <h3>Almoxarife<br>técnico</h3>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SEÇÃO GALERIA E CHAMADA FINAL -->
+    <section class="manut-escolha">
+        <div class="mod-container container">
+        
+            <!-- 4 Fotos Verticais -->
+            <div class="manut-galeria">
+                <div class="manut-foto escondido delay-1" data-aos="fade-up" data-aos-delay="100">
+                    <img src="assets/img/tecnico_manutencao-1.webp" alt="Técnico ARTEK em manutenção">
+                </div>
+                <div class="manut-foto escondido delay-2" data-aos="fade-up" data-aos-delay="200">
+                    <img src="assets/img/tecnico_manutencao-2.webp" alt="Inspeção técnica de elevador">
+                </div>
+                <div class="manut-foto escondido delay-3" data-aos="fade-up" data-aos-delay="300">
+                    <img src="assets/img/tecnico_manutencao-3.webp" alt="Lubrificação e ajustes">
+                </div>
+                <div class="manut-foto escondido delay-4" data-aos="fade-up" data-aos-delay="400">
+                    <img src="assets/img/tecnico_manutencao-4.webp" alt="Quadro de comando ARTEK">
+                </div>
+            </div>
+
+            <!-- Texto Central e Botão -->
+            <div class="manut-escolha-conteudo escondido delay-2" data-aos="fade-up" data-aos-delay="200">
+                <h2>Somos a sua melhor escolha em</h2>
+
+                <!-- Animação dos Locais de Atendimento (Abaixo do texto e acima do botão) -->
+            <div class="locais-grid row row-cols-auto justify-content-center justify-content-lg-between align-items-center g-4 my-4 mx-auto escondido">
+                
+                <!-- Cidade 1: Bertioga -->
+                <div class="col">
+                    <div class="local-item item-1 d-flex align-items-center gap-2">
+                        <div class="local-icone">
+                            <img src="assets/img/icon_local.png" alt="Localização Bertioga" class="img-fluid">
+                        </div>
+                        <span class="local-nome">Bertioga</span>
+                    </div>
+                </div>
+
+                <!-- Cidade 2: Guarujá -->
+                <div class="col">
+                    <div class="local-item item-2 d-flex align-items-center gap-2">
+                        <div class="local-icone">
+                            <img src="assets/img/icon_local.png" alt="Localização Guarujá" class="img-fluid">
+                        </div>
+                        <span class="local-nome">Guarujá</span>
+                    </div>
+                </div>
+
+                <!-- Cidade 3: Santos -->
+                <div class="col">
+                    <div class="local-item item-3 d-flex align-items-center gap-2">
+                        <div class="local-icone">
+                            <img src="assets/img/icon_local.png" alt="Localização Santos" class="img-fluid">
+                        </div>
+                        <span class="local-nome">Santos</span>
+                    </div>
+                </div>
+
+                <!-- Cidade 4: São Vicente -->
+                <div class="col">
+                    <div class="local-item item-4 d-flex align-items-center gap-2">
+                        <div class="local-icone">
+                            <img src="assets/img/icon_local.png" alt="Localização São Vicente" class="img-fluid">
+                        </div>
+                        <span class="local-nome">São Vicente</span>
+                    </div>
+                </div>
+
+                <!-- Cidade 5: Praia Grande -->
+                <div class="col">
+                    <div class="local-item item-5 d-flex align-items-center gap-2">
+                        <div class="local-icone">
+                            <img src="assets/img/icon_local.png" alt="Localização Praia Grande" class="img-fluid">
+                        </div>
+                        <span class="local-nome">Praia Grande</span>
+                    </div>
+                </div>
+
+            </div>
+
+                <p>
+                    Realizamos manutenção preventiva e corretiva nos principais equipamentos do mercado (Atlas Schindler, Otis, Kone, Thyssenkrupp entre outras).
+                </p>
+                <p>
+                    Com uma equipe técnica altamente capacitada, entregamos eficiência, segurança total e maior durabilidade para o seu elevador, seja qual for a fabricante.
+                </p>
+                
+                <a href="index.html#contato" class="btn-manut-cta">
+                    Solicite sua manutenção <span class="seta">➔</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Global injetado automaticamente via script.js -->
+    <div id="footer-global"></div>
+
+    <!-- Scripts do Bootstrap 5 e AOS Animações -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- Seu Script Principal -->
+    <script src="script.js"></script>
+</body>
+</html>

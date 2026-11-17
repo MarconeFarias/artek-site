@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artek Elevadores</title>
+
+    <!-- 1. Fonte Barlow -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,700;0,800;1,400&display=swap" rel="stylesheet">
+
+    <!-- 2. Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- 3. AOS CSS (Animações de Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- 4. Seu CSS customizado SEMPRE por último -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- SEÇÃO HERO (Com id="topo" para o link Home e Logo voltarem ao início) -->
+    <section id="topo" class="hero">
+        
+        <!-- Header Global injetado automaticamente pelo script.js -->
+        <div id="header-global" class="w-100"></div>
+
+        <div class="hero-content container" data-aos="fade-up">
+            <!-- O <br> força a quebra de linha no sítio exato do design -->
+            <h1>ELEVAR A SUA SEGURANÇA<br> É A NOSSA MISSÃO!</h1>
+            <p>Mais de 15 anos levando qualidade e tecnologia nas manutenções<br>e modernizações dos seus elevadores</p>
+            
+            <a href="manutencao.html" class="btn-primary">Saiba mais <span class="seta">➔</span></a>
+        </div>
+
+    </section>
+
+    <!-- SEÇÃO DE SERVIÇOS (Cards brancos) -->
+    <section id="servicos" class="servicos">
+        <div class="container">
+            <h2 data-aos="fade-up">Atendimento seguro<br>para o seu condomínio</h2>
+            
+            <div class="cards-container">
+                
+                <!-- Card 1: Manutenção -->
+                <a href="manutencao.html" class="card escondido delay-1" data-aos="fade-up" data-aos-delay="100">
+                    <img src="assets/img/mantencao-tecnicos.webp" alt="Manutenções Multimarcas">
+                    <h3>Manutenção</h3>
+                    <p>Manutenção preventiva e corretiva multimarcas com atendimento ágil e seguro.</p>
+                </a>
+
+                <!-- Card 2: Modernização -->
+                <a href="modernizacao.html" class="card escondido delay-2" data-aos="fade-up" data-aos-delay="200">
+                    <img src="assets/img/modernizacao.webp" alt="Modernização de Elevadores">
+                    <h3>Modernização</h3>
+                    <p>Atualização tecnológica e estética para valorizar seu patrimônio e reduzir custos.</p>
+                </a>
+
+                <!-- Card 3: Elevadores Novos -->
+                <a href="elevadores_novos.html" class="card escondido delay-3" data-aos="fade-up" data-aos-delay="300">
+                    <img src="assets/img/elevador-novo.webp" alt="Elevadores Novos e Seguros">
+                    <h3>Elevadores Novos</h3>
+                    <p>Projetos sob medida para novas edificações com tecnologia gearless de ponta.</p>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+<!-- SEÇÃO PORQUE NOS ESCOLHER! (BOOTSTRAP 5 + LOOPING AUTOMÁTICO + HOVER INTERATIVO) -->
+<section id="porque-escolher" class="secao-porque-escolher py-5 position-relative overflow-hidden">
+    <div class="container py-lg-4">
+        <div class="row g-4 g-lg-5 align-items-center">
+            
+            <!-- Coluna da Esquerda: Foto Vertical em Looping -->
+            <div class="col-12 col-lg-4">
+                <div class="porque-foto-frame position-relative rounded-4 overflow-hidden shadow-lg mx-auto">
+                    
+                    <!-- Foto 0 (Corresponde ao Tópico 1: Atendimento multimarcas) -->
+                    <img src="assets/img/foto-tecnico-abrindo-quadro-de-comando.webp" 
+                         alt="Técnico ARTEK Elevadores com frota própria" 
+                         class="porque-foto-item w-100 h-100 object-fit-cover is-active" 
+                         data-showcase-target="0" 
+                         loading="lazy">
+
+                    <!-- Foto 1 (Corresponde ao Tópico 2: Diagnóstico Inteligente) -->
+                    <img src="assets/img/foto-computador-na-mesa.webp" 
+                         alt="Diagnóstico técnico em quadro de comando" 
+                         class="porque-foto-item w-100 h-100 object-fit-cover" 
+                         data-showcase-target="1" 
+                         loading="lazy">
+
+                    <!-- Foto 2 (Corresponde ao Tópico 3: Logística Ágil no Litoral) -->
+                    <img src="assets/img/foto-tecnico-carro.webp" 
+                         alt="Atendimento técnico no Litoral Paulista" 
+                         class="porque-foto-item w-100 h-100 object-fit-cover" 
+                         data-showcase-target="2" 
+                         loading="lazy">
+
+                </div>
+            </div>
+
+            <!-- Coluna da Direita: Título + Grade 2x2 de Tópicos Interativos -->
+            <div class="col-12 col-lg-8">
+                
+                <!-- Título Centralizado sobre os tópicos conforme o design -->
+                <header class="text-center mb-5" data-aos="fade-up">
+                    <h2 class="porque-titulo text-white fw-bold m-0">Porque nos escolher!</h2>
+                    <p class="porque-topico-texto mb-0">
+                        Possuímos vasta experiência para o Litoral, conhecendo o funcionamento diferenciado<br>da região e aumentando a vida útil dos equipamentos.</p>
+                </header>
+
+                <!-- Grade de Tópicos (2 colunas no desktop, 1 no mobile) -->
+                <div class="row g-4 px-lg-3" role="tablist" aria-label="Diferenciais ARTEK Elevadores">
+                    
+                    <!-- Tópico 01: Atendimento multimarcas -->
+                    <div class="col-12 col-md-6">
+                        <article class="porque-topico d-flex align-items-start gap-3 p-3 rounded-4 is-active" 
+                                 data-showcase-trigger="0" 
+                                 role="tab" 
+                                 tabindex="0">
+                            <div class="porque-topico-icone flex-shrink-0">
+                                <img src="assets/img/icon-multimarcas.png" alt="" class="img-fluid">
+                            </div>
+                            <div>
+                                <h3 class="h5 fw-bold text-white mb-1">Atendimento multimarcas</h3>
+                                <p class="porque-topico-texto mb-0">
+                                    Atlas Schindler, Otis, KONE Thyssenkrupp (TKE), Orona e muito mais.
+                                </p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Tópico 02: Diagnóstico Inteligente -->
+                    <div class="col-12 col-md-6">
+                        <article class="porque-topico d-flex align-items-start gap-3 p-3 rounded-4" 
+                                 data-showcase-trigger="1" 
+                                 role="tab" 
+                                 tabindex="0">
+                            <div class="porque-topico-icone flex-shrink-0">
+                                <img src="assets/img/icon-diagnostico.png" alt="" class="img-fluid">
+                            </div>
+                            <div>
+                                <h3 class="h5 fw-bold text-white mb-1">Diagnóstico Inteligente</h3>
+                                <p class="porque-topico-texto mb-0">
+                                    Monitoramento rigoroso, laudos técnicos e histórico documentado.
+                                </p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Tópico 03: Logística Ágil no Litoral -->
+                    <div class="col-12 col-md-6">
+                        <article class="porque-topico d-flex align-items-start gap-3 p-3 rounded-4" 
+                                 data-showcase-trigger="2" 
+                                 role="tab" 
+                                 tabindex="0">
+                            <div class="porque-topico-icone flex-shrink-0">
+                                <img src="assets/img/icon-logistica.png" alt="" class="img-fluid">
+                            </div>
+                            <div>
+                                <h3 class="h5 fw-bold text-white mb-1">Logística Ágil no Litoral</h3>
+                                <p class="porque-topico-texto mb-0">
+                                    Cobertura estratégica para chamadas de emergências em toda Baixada Santista.
+                                </p>
+                            </div>
+                        </article>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- 7. SEÇÃO: CONHEÇA NOSSAS SOLUÇÕES / COMO FUNCIONA (INTERATIVA) -->
+<section id="como-funciona" class="secao-como-funciona py-5">
+    <div class="container py-lg-4">
+        
+        <!-- Cabeçalho: Título e Selo Estilizado -->
+        <div class="mb-5" data-aos="fade-up">
+            <h2 class="titulo-conheca fw-bold mb-0">Conheça nossas</h2>
+            <div class="selo-solucoes text-white fw-bold">
+                SOLUÇÕES
+            </div>
+        </div>
+
+        <!-- Texto Centralizado -->
+        <div class="row justify-content-center mb-5" data-aos="fade-up" data-aos-delay="100">
+            <div class="col-12 col-md-9 text-center">
+                <p class="fs-5 text-secondary">
+                    Com mais de 15 anos de mercado trabalhamos com um portfólio completo de soluções<br class="d-none d-lg-block"> com amplo suporte 
+                    para todas as fabricantes e montadoras do mercado.
+                </p>
+            </div>
+        </div>
+
+        <!-- Bloco "Como funciona" -->
+        <div class="trilha-processo" data-aos="fade-up" data-aos-delay="200">
+            
+            <h3 class="titulo-como-funciona fw-normal text-dark mb-4">Como funciona nossa parceria</h3>
+            
+            <!-- Grid de 4 Passos (Timeline Animada) -->
+            <div class="row g-0 mb-5">
+                
+                <!-- Passo 01 (Surge 100ms depois) -->
+                <div class="col-12 col-md-6 col-lg-3 passo-item pt-4 pe-lg-4 pb-4" data-aos="fade-right" data-aos-delay="100">
+                    <div class="d-flex align-items-center gap-2 mb-3">
+                        <span class="passo-num text-dark">01</span>
+                        <div class="passo-icone-circulo">
+                            <img src="assets/img/icone-lupa.png" alt="Inspeção" class="img-fluid">
+                        </div>
+                    </div>
+                    <h4 class="h6 fw-bold text-dark mb-2">Inspeção em Campo</h4>
+                    <p class="text-secondary small mb-0">
+                        Nosso técnico vai até o local para avaliar as reais condições do elevador.
+                    </p>
+                </div>
+
+                <!-- Passo 02 (Surge 300ms depois) -->
+                <div class="col-12 col-md-6 col-lg-3 passo-item pt-4 px-lg-4 pb-4 com-borda-esq" data-aos="fade-right" data-aos-delay="300">
+                    <div class="d-flex align-items-center gap-2 mb-3">
+                        <span class="passo-num text-dark">02</span>
+                        <div class="passo-icone-circulo">
+                            <img src="assets/img/icone-alvo.png" alt="Laudo" class="img-fluid">
+                        </div>
+                    </div>
+                    <h4 class="h6 fw-bold text-dark mb-2">Laudo Detalhado</h4>
+                    <p class="text-secondary small mb-0">
+                        Mostrando exatamente o que está seguro e o que precisa ser adequado de forma minuciosa.
+                    </p>
+                </div>
+
+                <!-- Passo 03 (Surge 500ms depois) -->
+                <div class="col-12 col-md-6 col-lg-3 passo-item pt-4 px-lg-4 pb-4 com-borda-esq" data-aos="fade-right" data-aos-delay="500">
+                    <div class="d-flex align-items-center gap-2 mb-3">
+                        <span class="passo-num text-dark">03</span>
+                        <div class="passo-icone-circulo">
+                            <img src="assets/img/icone-lampada.png" alt="Orçamento" class="img-fluid">
+                        </div>
+                    </div>
+                    <h4 class="h6 fw-bold text-dark mb-2">Orçamento Inteligente</h4>
+                    <p class="text-secondary small mb-0">
+                        Criamos uma proposta modular, separado por itens claros de fácil entendimento.
+                    </p>
+                </div>
+
+                <!-- Passo 04 (Surge 700ms depois) -->
+                <div class="col-12 col-md-6 col-lg-3 passo-item pt-4 ps-lg-4 pb-4 com-borda-esq" data-aos="fade-right" data-aos-delay="700">
+                    <div class="d-flex align-items-center gap-2 mb-3">
+                        <span class="passo-num text-dark">04</span>
+                        <div class="passo-icone-circulo">
+                            <img src="assets/img/icone-peça.png" alt="Gestão" class="img-fluid">
+                        </div>
+                    </div>
+                    <h4 class="h6 fw-bold text-dark mb-2">Gestão e Manutenção</h4>
+                    <p class="text-secondary small mb-0">
+                        Com a parceria firmada, demos início às visitas e à elaboração dos relatórios programados.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Botão Final -->
+        <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+            <a href="manutencao.html" class="btn-outline-custom d-inline-flex align-items-center">
+                conheça mais <span class="seta-animada fw-bold ms-2">&#10140;</span>
+            </a>
+        </div>
+
+    </div>
+</section>
+
+    <!-- SEÇÃO NOSSOS CLIENTES (CARROSSEL) -->
+    <section id="clientes" class="clientes">
+        <div class="clientes-container container">
+        
+            <!-- Cabeçalho alinhado à esquerda -->
+            <div class="clientes-topo escondido delay-1" data-aos="fade-right">
+                <span class="subtitulo-portfolio">PORTFÓLIO</span>
+                <h2>Nossos Clientes</h2>
+            </div>
+
+            <!-- Texto descritivo centralizado -->
+            <div class="clientes-descricao escondido delay-2" data-aos="fade-up" data-aos-delay="100">
+                <p>Clientes que confiam seus elevadores e escadas rolantes<br>com o serviço de alta qualidade da ARTEK Elevadores</p>
+            </div>
+
+            <!-- Carrossel de Projetos -->
+            <div class="carrossel-wrapper escondido delay-3" data-aos="fade-up" data-aos-delay="200">
+                
+                <!-- Botão Anterior -->
+                <button class="seta-carrossel seta-esq" id="btn-prev" aria-label="Anterior">&#10094;</button>
+
+                <div class="carrossel-track">
+                
+                    <!-- Card 1 -->
+                    <div class="cliente-card">
+                        <img src="assets/img/São Judas - Santos.webp" alt="São Judas">
+                        <span class="tag-setor">Comercial</span>
+                        <div class="card-info">
+                            <h3>São Judas</h3>
+                            <p>Santos/SP</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="cliente-card">
+                        <img src="assets/img/Banco do Brasil - Central Santos.webp" alt="Banco do Brasil">
+                        <span class="tag-setor">Comercial</span>
+                        <div class="card-info">
+                            <h3>Banco do Brasil</h3>
+                            <p>Santos/SP</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 (Ativo / Destaque Central) -->
+                    <div class="cliente-card ativo">
+                        <img src="assets/img/Unifesp Santos.webp" alt="Unifesp">
+                        <span class="tag-setor">Comercial</span>
+                        <div class="card-info">
+                            <h3>Unifesp</h3>
+                            <p>Santos/SP</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="cliente-card">
+                        <img src="assets/img/Edifício Calitania Varan - Guarujá.webp" alt="Edifício Calitania Varan">
+                        <span class="tag-setor">Residencial</span>
+                        <div class="card-info">
+                            <h3>Calitania Varan</h3>
+                            <p>Guarujá/SP</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 5 -->
+                    <div class="cliente-card">
+                        <img src="assets/img/Resort Ilha da Madeira - Riviera de São Lourenço.webp" alt="Resort Ilha da Madeira">
+                        <span class="tag-setor">Resort</span>
+                        <div class="card-info">
+                            <h3>Resort Ilha da Madeira</h3>
+                            <p>Riviera/SP</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 6 -->
+                    <div class="cliente-card">
+                        <img src="assets/img/edificio-ilha-de-venezia-fachada.webp" alt="Edificio Ilha de Venezia">
+                        <span class="tag-setor">Residencial</span>
+                        <div class="card-info">
+                            <h3>Ilha de Venezia</h3>
+                            <p>Bertioga/SP</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Botão Próximo -->
+                <button class="seta-carrossel seta-dir" id="btn-next" aria-label="Próximo">&#10095;</button>
+
+            </div>
+
+            <!-- Indicadores (6 Bolinhas inferiores correspondentes aos 6 cards) -->
+            <div class="carrossel-dots escondido delay-4">
+                <span class="dot" data-index="0"></span>
+                <span class="dot" data-index="1"></span>
+                <span class="dot ativo" data-index="2"></span>
+                <span class="dot" data-index="3"></span>
+                <span class="dot" data-index="4"></span>
+                <span class="dot" data-index="5"></span>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SEÇÃO FALE COM A ARTEK -->
+    <section id="contato" class="contato">
+        
+        <!-- Elementos decorativos de fundo (círculos desfocados) -->
+        <div class="blob blob-top-left"></div>
+        <div class="blob blob-bottom-right"></div>
+
+        <div class="contato-container container">
+
+            <!-- Cabeçalho Centralizado -->
+            <div class="contato-header escondido delay-1" data-aos="fade-up">
+                <h2>Fale com a ARTEK</h2>
+                <p>Solicite um orçamento sem compromisso e descubra como podemos transformar os elevadores do seu condomínio residencial ou comercial.</p>
+            </div>
+
+            <!-- Estrutura de Duas Colunas com suporte responsivo -->
+            <div class="contato-conteudo row g-5 align-items-start">
+            
+                <!-- Coluna da Esquerda: Formulário -->
+                <div class="col-12 col-lg-6">
+                    <form action="https://formsubmit.co/artekelevadoresoficial@gmail.com" method="POST" class="contato-form escondido delay-2" data-aos="fade-right" data-aos-delay="150">
+    
+                        <!-- Configurações internas do FormSubmit -->
+                        <input type="hidden" name="_subject" value="[TESTE] Novo Orçamento pelo Site - ARTEK Elevadores">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="text" name="_honey" style="display:none">
+
+                        <!-- Campos do formulário -->
+                        <input type="text" name="Nome" placeholder="Nome" class="input-half" required>
+                        <input type="tel" name="Telefone" placeholder="Telefone" class="input-half" required>
+
+                        <input type="text" name="Cidade" placeholder="Cidade" class="input-half" required>
+                        <input type="email" name="Email" placeholder="E-mail" class="input-full" required>
+
+                        <!-- AQUI ESTÁ O CAMPO QUE DIRECIONA PARA A PÁGINA OBRIGADO -->
+                        <input type="hidden" name="_next" value="obrigado.html">
+
+                        <textarea name="Mensagem" placeholder="Mensagem" class="input-full" rows="6" required></textarea>
+                        
+                        <!-- Checkbox de Consentimento LGPD (Obrigatório para enviar) -->
+                        <div class="lgpd-consentimento input-full">
+                            <label class="lgpd-label">
+                                <input type="checkbox" name="Aceite_LGPD" value="Concordou com os Termos e Política de Privacidade" required>
+                                <span>
+                                    Li e concordo com os <a href="termos_de_uso.html" target="_blank">Termos de Uso</a> e a <a href="politica_privacidade.html" target="_blank">Política de Privacidade</a> da ARTEK Elevadores.
+                                </span>
+                            </label>
+                        </div>
+
+                        <!-- Botão Enviar (Apenas um) -->
+                        <button type="submit" class="btn-enviar">Enviar</button>
+
+                    </form>
+                </div>
+
+                <!-- 2-Coluna da Direita: Imagem -->
+                <div class="col-12 col-lg-6">
+                    <div class="contato-imagem escondido delay-3" data-aos="fade-left" data-aos-delay="250">
+                        <img src="assets/img/office-artek.webp" alt="Equipe ARTEK trabalhando no escritório">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- RODAPÉ GLOBAL (Injetado automaticamente via script.js) -->
+    <div id="footer-global"></div>
+
+    <!-- Scripts do Bootstrap 5 e AOS Animações -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- Seu Script Principal -->
+    <script src="script.js"></script>
+
+</body>
+</html>

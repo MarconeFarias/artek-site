@@ -271,7 +271,6 @@ const ContactFormController = (() => {
     form.addEventListener('submit', async (evento) => {
       evento.preventDefault();
       
-      // Ajuste: Certifique-se de que a classe no seu HTML é mesmo .btn-enviar
       const btn = form.querySelector('.btn-enviar') || form.querySelector('button[type="submit"]');
       const textoOriginal = btn.innerText;
 
@@ -287,7 +286,7 @@ const ContactFormController = (() => {
 
         if (!resposta.ok) throw new Error('Falha no envio');
 
-        // NOVA LÓGICA: Verifica se existe a página de destino configurada no form
+        // Verifica se existe a página de destino configurada no form
         const inputNext = form.querySelector('input[name="_next"]');
         
         if (inputNext && inputNext.value) {

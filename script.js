@@ -259,18 +259,27 @@ const ClientesCarouselController = (() => {
 })();
 
 // ==========================================
-// 5. MÓDULO DE ENVIO DO FORMULÁRIO (AJAX)
+// 5. MÓDULO DE ENVIO DO FORMULÁRIO (EMAILJS)
 // ==========================================
+
+
+
+
 const ContactFormController = (() => {
-  const ENDPOINT = 'https://formsubmit.co/ajax/artekelevadoresoficial@gmail.com';
+  const PUBLIC_KEY = 'nOimYNtQE_TWIiDr4';
+  const SERVICE_ID = 'service_yvt8rra';
+  const TEMPLATE_ID = 'template_gns4pqr';
 
   const init = () => {
     const form = document.querySelector('.contato-form');
     if (!form) return;
 
+    // Inicializa o EmailJS com sua chave pública
+    emailjs.init({ publicKey: PUBLIC_KEY });
+
     form.addEventListener('submit', async (evento) => {
       evento.preventDefault();
-      
+
       const btn = form.querySelector('.btn-enviar') || form.querySelector('button[type="submit"]');
       const textoOriginal = btn.innerText;
 
@@ -278,46 +287,39 @@ const ContactFormController = (() => {
       btn.disabled = true;
 
       try {
-        const resposta = await fetch(ENDPOINT, {
-          method: 'POST',
-          headers: { Accept: 'application/json' },
-          body: new FormData(form)
-        });
+        // Envia todos os campos do form diretamente para o template
+        await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form);
 
-        if (!resposta.ok) throw new Error('Falha no envio');
-
-        // Verifica se existe a página de destino configurada no form
         const inputNext = form.querySelector('input[name="_next"]');
-        
-        if (inputNext && inputNext.value) {
-            // Se encontrar o _next, vai para a página Obrigado
-            window.location.href = inputNext.value;
-        } else {
-            // Comportamento reserva caso o input_next seja removido acidentalmente
-            btn.innerText = 'Mensagem Enviada! ✓';
-            btn.style.backgroundColor = '#198754';
-            form.reset();
 
-            setTimeout(() => {
-              btn.innerText = textoOriginal;
-              btn.style.backgroundColor = '';
-              btn.disabled = false;
-            }, 4000);
+        if (inputNext && inputNext.value) {
+          window.location.href = inputNext.value;
+        } else {
+          btn.innerText = 'Mensagem Enviada! ✓';
+          btn.style.backgroundColor = '#198754';
+          form.reset();
+
+          setTimeout(() => {
+            btn.innerText = textoOriginal;
+            btn.style.backgroundColor = '';
+            btn.disabled = false;
+          }, 4000);
         }
       } catch (erro) {
-        console.error(erro); // Ajuda a ver o erro exato no console se falhar
+        console.error('Erro EmailJS:', erro);
         alert('Ocorreu um erro ao enviar. Verifique sua conexão ou contate pelo WhatsApp.');
         btn.innerText = textoOriginal;
         btn.disabled = false;
       }
     });
   };
-  
+
   return { init };
 })();
 
 // Inicializa o formulário de contato
 ContactFormController.init();
+
 
 // ==========================================
 // 6. MÓDULO DE TRANSIÇÕES ENTRE PÁGINAS DE SERVIÇOS
@@ -388,6 +390,5 @@ document.addEventListener('DOMContentLoaded', () => {
   ScrollRevealController.init();
   ShowcaseController.init();
   ClientesCarouselController.init();
-  ContactFormController.init();
   PageTransitionController.init();
 });

@@ -428,34 +428,28 @@
             
                 <!-- Coluna da Esquerda: Formulário -->
                 <div class="col-12 col-lg-6">
-                    <form action="https://formsubmit.co/artekelevadoresoficial@gmail.com" method="POST" class="contato-form escondido delay-2" data-aos="fade-right" data-aos-delay="150">
-    
-                        <!-- Configurações internas do FormSubmit -->
-                        <input type="hidden" name="_subject" value="[TESTE] Novo Orçamento pelo Site - ARTEK Elevadores">
-                        <input type="hidden" name="_template" value="table">
-                        <input type="hidden" name="_captcha" value="false">
-                        <input type="text" name="_honey" style="display:none">
+                <form class="contato-form escondido delay-2" data-aos="fade-right" data-aos-delay="150">
+                    
+                    <!-- Campos do formulário -->
+                    <input type="text" name="Nome" placeholder="Nome" class="input-half" required>
+                    <input type="tel" name="Telefone" placeholder="Telefone" class="input-half" required>
 
-                        <!-- Campos do formulário -->
-                        <input type="text" name="Nome" placeholder="Nome" class="input-half" required>
-                        <input type="tel" name="Telefone" placeholder="Telefone" class="input-half" required>
+                    <input type="text" name="Cidade" placeholder="Cidade" class="input-half" required>
+                    <input type="email" name="Email" placeholder="E-mail" class="input-full" required>
 
-                        <input type="text" name="Cidade" placeholder="Cidade" class="input-half" required>
-                        <input type="email" name="Email" placeholder="E-mail" class="input-full" required>
+                    <!-- Redirecionamento após envio -->
+                    <input type="hidden" name="_next" value="obrigado.html">
 
-                        <!-- O CAMPO QUE DIRECIONA PARA A PÁGINA OBRIGADO -->
-                        <input type="hidden" name="_next" value="obrigado.html">
+                    <textarea name="Mensagem" placeholder="Mensagem" class="input-full" rows="6" required></textarea>
 
-                        <textarea name="Mensagem" placeholder="Mensagem" class="input-full" rows="6" required></textarea>
-                        
-                        <!-- Checkbox de Consentimento LGPD (Obrigatório para enviar) -->
-                        <div class="lgpd-consentimento input-full">
-                            <label class="lgpd-label">
-                                <input type="checkbox" name="Aceite_LGPD" value="Concordou com os Termos e Política de Privacidade" required>
-                                <span>
-                                    Li e concordo com os <a href="termos_de_uso.html" target="_blank">Termos de Uso</a> e a <a href="politica_privacidade.html" target="_blank">Política de Privacidade</a> da ARTEK Elevadores.
-                                </span>
-                            </label>
+                    <!-- Checkbox de Consentimento LGPD -->
+                    <div class="lgpd-consentimento input-full">
+                        <label class="lgpd-label">
+                            <input type="checkbox" name="Aceite_LGPD" value="Concordou com os Termos e Política de Privacidade" required>
+                            <span>
+                                Li e concordo com os <a href="termos_de_uso.html" target="_blank">Termos de Uso</a> e a <a href="politica_privacidade.html" target="_blank">Política de Privacidade</a> da ARTEK Elevadores.
+                            </span>
+                        </label>
                         </div>
 
                         <!-- Botão Enviar (Apenas um) -->
@@ -481,6 +475,10 @@
     <!-- Scripts do Bootstrap 5 e AOS Animações -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- Scripts para o envio de e-mail -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
 
     <!-- Script Principal -->
     <script src="script.js"></script>
